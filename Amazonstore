@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slot Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .slot-machine {
+      text-align: center;
+    }
+
+    .slot {
+      display: flex;
+      justify-content: center;
+    }
+
+    .slot-item {
+      font-size: 3rem;
+      width: 60px;
+      height: 60px;
+      margin: 0 10px;
+      border: 2px solid #333;
+      border-radius: 50%;
+      line-height: 60px;
+      background-color: #fff;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotateY(0deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
+    #play-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #play-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="slot-machine">
+    <div class="slot">
+      <div id="slot1" class="slot-item">7</div>
+      <div id="slot2" class="slot-item">7</div>
+      <div id="slot3" class="slot-item">7</div>
+    </div>
+    <button id="play-button">Play</button>
+  </div>
+  
+  <script>
+    document.getElementById('play-button').addEventListener('click', function() {
+      let slots = document.querySelectorAll('.slot-item');
+      
+      slots.forEach(slot => {
+        let randomNum = Math.floor(Math.random() * 9) + 1;
+        slot.innerText = randomNum;
+      });
+    });
+  </script>
+</body>
+</html>
